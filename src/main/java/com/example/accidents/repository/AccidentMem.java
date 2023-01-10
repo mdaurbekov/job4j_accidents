@@ -24,4 +24,18 @@ public class AccidentMem {
     public List<Accident> getAll() {
         return accidents.values().stream().toList();
     }
+
+    public void save(Accident accident) {
+        accident.setId(numberAccident.incrementAndGet());
+        accidents.put(accident.getId(), accident);
+    }
+
+    public void update(Accident accident) {
+        int id = accident.getId();
+        accidents.replace(id, accidents.get(id), accident);
+    }
+
+    public Accident findById(int id) {
+        return accidents.get(id);
+    }
 }

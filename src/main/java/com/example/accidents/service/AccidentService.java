@@ -18,5 +18,16 @@ public class AccidentService {
         return accidentMem.getAll();
     }
 
+    public void create(Accident accident) {
+        accidentMem.save(accident);
+    }
+
+    public void update(Accident accident) {
+        accidentMem.update(accident);
+    }
+
+    public Accident findById(int id) {
+        return accidentMem.findById(id);
+    }
 
 }

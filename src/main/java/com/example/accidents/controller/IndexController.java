@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @ThreadSafe
 @AllArgsConstructor
 public class IndexController {
-
     private AccidentService accidentService;
-
 
     @GetMapping("/index")
     public String index(Model model) {
