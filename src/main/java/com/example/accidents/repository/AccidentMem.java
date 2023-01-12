@@ -1,10 +1,12 @@
 package com.example.accidents.repository;
 
 import com.example.accidents.model.Accident;
+import com.example.accidents.model.AccidentType;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -15,10 +17,14 @@ public class AccidentMem {
     private final AtomicInteger numberAccident = new AtomicInteger();
 
     public AccidentMem() {
-        accidents.put(numberAccident.incrementAndGet(), new Accident(numberAccident.get(), "name1", "text1", "address1"));
-        accidents.put(numberAccident.incrementAndGet(), new Accident(numberAccident.get(), "name2", "text2", "address2"));
-        accidents.put(numberAccident.incrementAndGet(), new Accident(numberAccident.get(), "name3", "text3", "address3"));
-        accidents.put(numberAccident.incrementAndGet(), new Accident(numberAccident.get(), "name4", "text4", "address4"));
+        accidents.put(numberAccident.incrementAndGet(), new Accident(numberAccident.get(),
+                "name1", "text1", "address1", new AccidentType(1, "Две машины")));
+        accidents.put(numberAccident.incrementAndGet(), new Accident(numberAccident.get(),
+                "name2", "text2", "address2", new AccidentType(1, "Две машины")));
+        accidents.put(numberAccident.incrementAndGet(), new Accident(numberAccident.get(),
+                "name3", "text3", "address3", new AccidentType(2, "Машина и человек")));
+        accidents.put(numberAccident.incrementAndGet(), new Accident(numberAccident.get(),
+                "name4", "text4", "address4", new AccidentType(3, "Машина и велосипед")));
     }
 
     public List<Accident> getAll() {
@@ -35,7 +41,7 @@ public class AccidentMem {
         accidents.replace(id, accidents.get(id), accident);
     }
 
-    public Accident findById(int id) {
-        return accidents.get(id);
+    public Optional<Accident> findById(int id) {
+        return Optional.of(accidents.get(id));
     }
 }

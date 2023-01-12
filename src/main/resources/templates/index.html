@@ -35,6 +35,7 @@
             <th scope="col">Название</th>
             <th scope="col">Описание</th>
             <th scope="col">Адрес</th>
+            <th scope="col">Тип</th>
 
 
         </tr>
@@ -45,6 +46,7 @@
             <td th:text="${accident.name}"/>
             <td th:text="${accident.text}"/>
             <td th:text="${accident.address}"/>
+            <td th:text="${accident.type.name}"/>
             <td>
                 <a th:href="@{|/formUpdate?id=${accident.id}|}">
                     <i class="fa fa-edit"></i>
