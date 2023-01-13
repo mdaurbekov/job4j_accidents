@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -24,7 +25,7 @@ public class AccidentTypeMem {
         return accidentsType.values().stream().toList();
     }
 
-    public AccidentType findById(int id) {
-        return accidentsType.get(id);
+    public Optional<AccidentType> findById(int id) {
+        return Optional.ofNullable(accidentsType.get(id));
     }
 }
