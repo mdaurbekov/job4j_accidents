@@ -7,6 +7,7 @@ import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @ThreadSafe
@@ -18,7 +19,7 @@ public class AccidentTypeService {
         return accidentTypeMem.getAll();
     }
 
-    public AccidentType findById(int id) {
+    public Optional<AccidentType> findById(int id) {
         return accidentTypeMem.findById(id);
     }
 
